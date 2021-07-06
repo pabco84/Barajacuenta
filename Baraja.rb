@@ -13,11 +13,36 @@ class Card
     end
 end
 
-class deck
-    def initialize([])
+class Deck
+    attr_reader :cards 
+    def initialize
+        # @cartas = (1..13).map{|num| %w[C D E T].map {|kind| Card.new(num, kind)}}
+        # .flatten
+        @cards = []
+        (1..13).each do |num|
+            %w[C D E T].each do |kind|
+                @cards << Card.new(num, kind)
+            end
+        end
     end
+
+
+def shuffles
+    self.cards.shuffle
 end
 
-results = []
-5.times { |i| results << Card.new(rand(1..13), ["C", "D", "T", "E"].sample)}
-puts results
+def draw
+    self.cards.pop
+end
+
+def initial_draw
+    self.cards.pop(5)
+
+end
+end 
+pp Deck.new
+pp "---------------"
+cards = Deck.new
+pp cards.shuffles
+pp "---------------"
+pp cards.initial_draw

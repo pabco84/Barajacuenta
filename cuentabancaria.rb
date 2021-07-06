@@ -19,8 +19,7 @@ class Bankacount
 end
 
      def transfer(ac1,ac2)
-        ac3 = ac1 + ac2
-        ac4 = ac1 - ac2
+        ac1 = ac1 + ac2
      end
 
 
