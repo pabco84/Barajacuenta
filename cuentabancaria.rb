@@ -1,10 +1,16 @@
 class User 
     attr_accessor :name, :total_balance, :acount
-    def initialize(name, acount)
+    def initialize(name, ac)
+        @ac = ac
         @name = name
-        @acount = acount
     end
+
+    def total_balance
+
+    end
+
 end
+
 
 class Bankacount
     attr_accessor :balance
@@ -16,41 +22,27 @@ class Bankacount
         @account_number = account_number
         @balance = balance
     end
+
+
+    def transfer(amount, account)
+        self.balance = self.balance - amount    
+        account.balance = account.balance + amount
+    end
+
 end
-
-     def transfer(ac1,ac2)
-        ac1 = ac1 + ac2
-     end
-
-
-ac1 = Bankacount.new('santander' ,1234,2000)
-ac2 = Bankacount.new('chile' ,4321,3000)
+ac1 = Bankacount.new('santander' ,1234,10000)
+ac2 = Bankacount.new('chile' ,4321,10000)
 p1 = User.new('joaquin',ac1)
 p2 = User.new('riquelme',ac2)
-p1 = transfer
+
 
 pp p1
 pp p2
 
-# class Persona
-#     attr_accessor :nombre, :edad, :redes_sociales
-#     def initialize(nombre,edad,redes_sociales)
-#         @nombre = nombre
-#         @edad = edad
-#         @redes_sociales = redes_sociales
-#     end
-# end
 
-# class Redsocial 
-#     attr_accessor :tipo, :nombre_usuario
-#     def initialize(tipo, nombre_usuario)
-#         @tipo = tipo
-#         @nombre_usuario = nombre_usuario
-#     end
-# end
 
-# rs1 = Redsocial.new(:facebook, 'muka')
-# rs2 = Redsocial.new(:twitter, 'mukool')
-# p1 = Persona.new('Roberto', 29, [rs1, rs2])
-
-# puts p1.redes_sociales
+ac1.transfer(5000, ac2)
+p1 = User.new('joaquin',ac1)
+p2 = User.new('riquelme',ac2)
+pp p1
+pp p2
